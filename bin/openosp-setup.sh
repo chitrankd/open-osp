@@ -4,10 +4,11 @@
 #set -euxo
 set -eu
 
-LOCATION=${1:-bc}
+LOCATION=${1:-dev}
 
 # tr command does not work in UNIX environments. OpenSSL is common in every environment.
-DB_PASSWORD=$(openssl rand -base64 8)
+#DB_PASSWORD=$(openssl rand -base64 8)
+DB_PASSWORD=liyi
 EXPEDIUS_SECRET=$(openssl rand -base64 8)
 FAXWS_SECRET=$(openssl rand -base64 8)
 
@@ -83,6 +84,11 @@ if [ ! -f ./volumes/oscar.properties ]; then
     # We also might want to use Oscar19 for Ontario builds
     echo "OSCAR_TREEISH=oscar19.1" >> ./local.env
     echo "OSCAR_REPO=https://countable@bitbucket.com/oscaremr/oscar.git" >> ./local.env
+
+  elif [ "$LOCATION" == 'dev' ]; then
+    echo "Using Ontario properties"
+    cp docker/oscar/conf/oscar_dev.properties ./volumes/oscar.properties
+
   else
     echo "Using default BC properties"
     cp docker/oscar/conf/oscar_mcmaster_bc.properties ./volumes/oscar.properties

@@ -2,9 +2,12 @@
 
 set -uxo
 
-repo_name='oscar'
-repo_url=${1:-https://bitbucket.org/openoscar/oscar.git}
-repo_branch=${2:-release/Oscar-BC-15}
+# repo_name='oscar'
+repo_name='ccosp/open-o'
+# repo_url=${1:-https://bitbucket.org/openoscar/oscar.git}
+repo_url=${1:-https://github.com/ccosp/open-o.git}
+# repo_branch=${2:-release/Oscar-BC-15}
+repo_branch=${2:-master}
 repo_path='docker/oscar/oscar'
 
 echo "Cloning ${repo_name} from ${repo_url} to ${repo_path}"

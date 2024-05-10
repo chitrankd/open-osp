@@ -29,3 +29,5 @@ tmp/
 local.env
 *.lrz
 
+/.idea/
+/.vscode/
